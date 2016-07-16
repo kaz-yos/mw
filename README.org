@@ -1,0 +1,115 @@
+#+TITLE: Matching weights simulation study R code
+#+AUTHOR: Kazuki Yoshida
+#+EMAIL: kazukiyoshida@mail.harvard.edu
+#+DATE: 2016-07-16
+# ############################################################################ #
+
+* What is this?
+
+  The code included in this repository was used to conduct the simulation study described in the [[http://www.slideshare.net/kaz_yos/matching-weights-to-simultaneous-compare-three-treatment-groups-a-simulation-study][presentation]] at the Epidemiology Congress of Americas 2016 (Miami, Florida, USA). The simulation study compared matching weights ([[http://www.ncbi.nlm.nih.gov/pubmed/23902694][Li \textit{et al} 2013]]), three-way matching ([[http://www.ncbi.nlm.nih.gov/pubmed/23532053][Rassen \textit{et al} 2013]]), and inverse probability of treatment weighting ([[http://www.ncbi.nlm.nih.gov/pubmed/10955408][Robins \textit{et al} 2000]]) in three-level categorical point exposure setting.
+
+
+* Files and folders
+
+ - *.R: Main R script files for generating simulation data, analyzing data, and reporting results. Execution each file will generate a plain text report file named *.R.txt. Only =03.Report.R.txt= is kept in this repository.
+ - *_Lsf.sh: Example parallelization shell scripts for the Linux LSF batch job system. These are designed for Harvard Medical School's Orchestra cluster specifically, and are not expected to work without modification elsewhere.
+ - *_Slurm.sh: Example parallelization shell scripts for the Linux SLURM batch job system. These are designed for Harvard University's Odyssey cluster specifically, and are not expected to work without modification elsewhere.
+ - data: Folder for simulation data. Due to file size issues, only the analysis result files sufficient for running =03.Report.R= is kept.
+ - figures: Folder for figure PDFs generatd by reporting scripts.
+ - function_definitions: Folder for R function definitions used by the main R scripts.
+ - rassen_toolbox: Folder for Rassen \textit{et al}'s [[http://www.drugepi.org/dope-downloads/#Pharmacoepidemiology%20Toolbox][Pharmacoepidemiology Toolbox]]. =rassen_toolbox/java/pharmacoepi.jar= is required for three-way matching.
+
+
+* How to replicate simulation
+
+The scripts were written on a macOS system, and for the most part executed on Linux high-performance cluster systems. The execution is computationally intensive, thus, parallelized execution on a computer cluster system is required, particularly for the bootstrapping part.
+
+
+** Setting up environment
+
+The following code should install packages that are required by the simulation study.
+
+#+BEGIN_SRC sh
+Rscript ./00.InstallDependencies.R
+#+END_SRC
+
+
+** Generate data
+
+The simulated dataset must be generated first. The following generates 48 scenario data files (e.g., Scenario001\_R1000.RData) having 1000 iterations each in the data.
+
+#+BEGIN_SRC sh
+Rscript ./01.DataGenerator.R
+#+END_SRC
+
+
+** Conduct analyses
+
+Matching weights, three-way matching, and inverse probability of treatment weights-based analyses are conducted by specifying the scenario data file. Analysis must be invoked on one file at a time. For example, for invocation on the first scenario file, use the following code.
+
+#+BEGIN_SRC sh
+Rscript ./02.RunSimulation.R ./data/Scenario001_R1000.RData
+#+END_SRC
+
+*** Parallelization
+
+This process can be parallelized by distributing the simulation job on each file to a node in a large computer cluster. Example batch files for the LSF and SLURM job dispatch systems are included. Modification of these script to your local cluster system is necessary before they are of any use.
+
+**** LSF job dispatch system
+#+BEGIN_SRC sh
+./02.RunSimulation_Lsf.sh ./data/Scenario*
+#+END_SRC
+
+**** SLURM job dispatch system
+#+BEGIN_SRC sh
+./02.RunSimulation_Slurm.sh ./data/Scenario*
+#+END_SRC
+
+
+** Report results
+
+After conducting analyses on all scenarios, the following script can be used to generate reporting. The figures are generated in the figures folder.
+
+#+BEGIN_SRC sh
+Rscript ./03.Report.R
+#+END_SRC
+
+
+** Bootstrapping
+
+Bootstrapping within a simulation study is a highly computationally intensive task. Thus, this part is kept separate from the rest of the simulation. The script is designed to work on the one tenth of each scenario at a time. For example, for the first part of the first scenario, execute the first line. For the last part of the first scenario, execute the second line.
+
+#+BEGIN_SRC sh
+Rscript ./04.Bootstrap.R ./data/Scenario001_R1000.RData 1
+Rscript ./04.Bootstrap.R ./data/Scenario001_R1000.RData 10
+#+END_SRC
+
+*** Parallelization
+
+This process can also be parallelized. Each one tenth of each scenario is dispatched to a separate node using the following scripts. Again modification of these shell scripts to your local cluster system is necessary before they are of any use.
+
+**** LSF job dispatch system
+#+BEGIN_SRC sh
+./04.Bootstrap_Lsf.sh ./data/Scenario*
+#+END_SRC
+
+**** SLURM job dispatch system
+#+BEGIN_SRC sh
+./04.Bootstrap_Slurm.sh ./data/Scenario*
+#+END_SRC
+
+
+** Bootstrap reporting
+
+After conducting bootstrapping on all scenarios, the following script can be used to generate reporting. The figure is generated in the figures folder.
+
+#+BEGIN_SRC sh
+Rscript ./05.BootstrapReport.R
+#+END_SRC
+
+
+* Version history
+- 2016-07-16: Initial upload
+
+# ############################################################################ #
+#+OPTIONS: toc:nil

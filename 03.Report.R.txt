@@ -1,0 +1,508 @@
+### Started  2016-07-16 08:17:37 
+###
+### Load data files
+################################################################################
+### Files to be read
+ [1] "./data/Result001_R1000.RData" "./data/Result002_R1000.RData" "./data/Result003_R1000.RData"
+ [4] "./data/Result004_R1000.RData" "./data/Result005_R1000.RData" "./data/Result006_R1000.RData"
+ [7] "./data/Result007_R1000.RData" "./data/Result008_R1000.RData" "./data/Result009_R1000.RData"
+[10] "./data/Result010_R1000.RData" "./data/Result011_R1000.RData" "./data/Result012_R1000.RData"
+[13] "./data/Result013_R1000.RData" "./data/Result014_R1000.RData" "./data/Result015_R1000.RData"
+[16] "./data/Result016_R1000.RData" "./data/Result017_R1000.RData" "./data/Result018_R1000.RData"
+[19] "./data/Result019_R1000.RData" "./data/Result020_R1000.RData" "./data/Result021_R1000.RData"
+[22] "./data/Result022_R1000.RData" "./data/Result023_R1000.RData" "./data/Result024_R1000.RData"
+[25] "./data/Result025_R1000.RData" "./data/Result026_R1000.RData" "./data/Result027_R1000.RData"
+[28] "./data/Result028_R1000.RData" "./data/Result029_R1000.RData" "./data/Result030_R1000.RData"
+[31] "./data/Result031_R1000.RData" "./data/Result032_R1000.RData" "./data/Result033_R1000.RData"
+[34] "./data/Result034_R1000.RData" "./data/Result035_R1000.RData" "./data/Result036_R1000.RData"
+[37] "./data/Result037_R1000.RData" "./data/Result038_R1000.RData" "./data/Result039_R1000.RData"
+[40] "./data/Result040_R1000.RData" "./data/Result041_R1000.RData" "./data/Result042_R1000.RData"
+[43] "./data/Result043_R1000.RData" "./data/Result044_R1000.RData" "./data/Result045_R1000.RData"
+[46] "./data/Result046_R1000.RData" "./data/Result047_R1000.RData" "./data/Result048_R1000.RData"
+###
+### Name scenarios
+################################################################################
+### Show scenarios
+   scenario    N     XT_assoc    pExpo               effects               em pDis
+1         1 6000 Good overlap 33:33:33     Null main effects Modification (-) 0.05
+2         2 6000 Poor overlap 33:33:33     Null main effects Modification (-) 0.05
+3         3 6000 Good overlap 10:45:45     Null main effects Modification (-) 0.05
+4         4 6000 Poor overlap 10:45:45     Null main effects Modification (-) 0.05
+5         5 6000 Good overlap 10:10:80     Null main effects Modification (-) 0.05
+6         6 6000 Poor overlap 10:10:80     Null main effects Modification (-) 0.05
+7         7 6000 Good overlap 33:33:33     Null main effects Modification (-)  0.2
+8         8 6000 Poor overlap 33:33:33     Null main effects Modification (-)  0.2
+9         9 6000 Good overlap 10:45:45     Null main effects Modification (-)  0.2
+10       10 6000 Poor overlap 10:45:45     Null main effects Modification (-)  0.2
+11       11 6000 Good overlap 10:10:80     Null main effects Modification (-)  0.2
+12       12 6000 Poor overlap 10:10:80     Null main effects Modification (-)  0.2
+13       13 6000 Good overlap 33:33:33 Non-null main effects Modification (-) 0.05
+14       14 6000 Poor overlap 33:33:33 Non-null main effects Modification (-) 0.05
+15       15 6000 Good overlap 10:45:45 Non-null main effects Modification (-) 0.05
+16       16 6000 Poor overlap 10:45:45 Non-null main effects Modification (-) 0.05
+17       17 6000 Good overlap 10:10:80 Non-null main effects Modification (-) 0.05
+18       18 6000 Poor overlap 10:10:80 Non-null main effects Modification (-) 0.05
+19       19 6000 Good overlap 33:33:33 Non-null main effects Modification (-)  0.2
+20       20 6000 Poor overlap 33:33:33 Non-null main effects Modification (-)  0.2
+21       21 6000 Good overlap 10:45:45 Non-null main effects Modification (-)  0.2
+22       22 6000 Poor overlap 10:45:45 Non-null main effects Modification (-)  0.2
+23       23 6000 Good overlap 10:10:80 Non-null main effects Modification (-)  0.2
+24       24 6000 Poor overlap 10:10:80 Non-null main effects Modification (-)  0.2
+25       25 6000 Good overlap 33:33:33     Null main effects Modification (+) 0.05
+26       26 6000 Poor overlap 33:33:33     Null main effects Modification (+) 0.05
+27       27 6000 Good overlap 10:45:45     Null main effects Modification (+) 0.05
+28       28 6000 Poor overlap 10:45:45     Null main effects Modification (+) 0.05
+29       29 6000 Good overlap 10:10:80     Null main effects Modification (+) 0.05
+30       30 6000 Poor overlap 10:10:80     Null main effects Modification (+) 0.05
+31       31 6000 Good overlap 33:33:33     Null main effects Modification (+)  0.2
+32       32 6000 Poor overlap 33:33:33     Null main effects Modification (+)  0.2
+33       33 6000 Good overlap 10:45:45     Null main effects Modification (+)  0.2
+34       34 6000 Poor overlap 10:45:45     Null main effects Modification (+)  0.2
+35       35 6000 Good overlap 10:10:80     Null main effects Modification (+)  0.2
+36       36 6000 Poor overlap 10:10:80     Null main effects Modification (+)  0.2
+37       37 6000 Good overlap 33:33:33 Non-null main effects Modification (+) 0.05
+38       38 6000 Poor overlap 33:33:33 Non-null main effects Modification (+) 0.05
+39       39 6000 Good overlap 10:45:45 Non-null main effects Modification (+) 0.05
+40       40 6000 Poor overlap 10:45:45 Non-null main effects Modification (+) 0.05
+41       41 6000 Good overlap 10:10:80 Non-null main effects Modification (+) 0.05
+42       42 6000 Poor overlap 10:10:80 Non-null main effects Modification (+) 0.05
+43       43 6000 Good overlap 33:33:33 Non-null main effects Modification (+)  0.2
+44       44 6000 Poor overlap 33:33:33 Non-null main effects Modification (+)  0.2
+45       45 6000 Good overlap 10:45:45 Non-null main effects Modification (+)  0.2
+46       46 6000 Poor overlap 10:45:45 Non-null main effects Modification (+)  0.2
+47       47 6000 Good overlap 10:10:80 Non-null main effects Modification (+)  0.2
+48       48 6000 Poor overlap 10:10:80 Non-null main effects Modification (+)  0.2
+###
+### Numerical Examination
+################################################################################
+### Check if there are missing values (corrupt scenarios)
+named numeric(0)
+### Check if caliper widening ever happened
+[1] scenario XT_assoc pT.0     pT.1     pT.2    
+<0 rows> (or 0-length row.names)
+### Magnitude of bias
+### Proportion M > Mw using entire sample true value
+[1] 0.4861111
+### Proportion M > Mw using common support true value
+[1] 0.4791667
+### Magnitude of variance
+### Proportion M > Mw
+[1] 1
+### Proportion Ip > Mw
+[1] 0.5416667
+### Proportion M > Ip
+[1] 0.5902778
+### Magnitude of MSE
+### Proportion M > Mw
+[1] 1
+### Proportion Ip > Mw
+[1] 0.5416667
+### Proportion M > Ip
+[1] 0.5902778
+### False positive rate
+# A tibble: 4 x 6
+  method       mean totalNull antiCon05 antiCon06 antiCon07
+  <fctr>      <dbl>     <int>     <int>     <int>     <int>
+1      U 0.58411111        36        36        36        33
+2      M 0.04269444        36         7         1         0
+3     Mw 0.04461111        36         9         2         0
+4     Ip 0.15422222        36        20        17        17
+###
+### Graphical Examination
+################################################################################
+### Sample size
+### SMD
+### Prevalence of modifier
+### Bias related
+### Variance
+### MSE
+### Alpha rate
+### Coverage
+### Minimum counts
+null device 
+          1 
+
+###
+### Production figures
+################################################################################
+null device 
+          1 
+null device 
+          1 
+null device 
+          1 
+null device 
+          1 
+null device 
+          1 
+null device 
+          1 
+null device 
+          1 
+null device 
+          1 
+null device 
+          1 
+
+###
+### Anomaly assessment
+################################################################################
+### Assessment of very high variance in matching
+### Show configuration for most extreme scenario
+      pExpo     XT_assoc               effects               em pDis
+40 10:45:45 Poor overlap Non-null main effects Modification (+) 0.05
+### Extract iteration results
+### Show coefficients distribution (very low coefficients)
+   U.coef.1v0         U.coef.2v0         U.coef.2v1        M.coef.1v0        M.coef.2v0         M.coef.2v1      
+ Min.   :-0.53521   Min.   :-0.80499   Min.   :-0.5758   Min.   :-2.1972   Min.   :-17.5020   Min.   :-17.8628  
+ 1st Qu.:-0.01595   1st Qu.:-0.22777   1st Qu.:-0.2986   1st Qu.:-0.4700   1st Qu.: -1.0116   1st Qu.: -0.8473  
+ Median : 0.11292   Median :-0.09858   Median :-0.2114   Median :-0.1542   Median : -0.6061   Median : -0.4520  
+ Mean   : 0.12718   Mean   :-0.08344   Mean   :-0.2106   Mean   :-0.1794   Mean   : -0.7239   Mean   : -0.5444  
+ 3rd Qu.: 0.26259   3rd Qu.: 0.05777   3rd Qu.:-0.1230   3rd Qu.: 0.1335   3rd Qu.: -0.2624   3rd Qu.:  0.0000  
+ Max.   : 1.19776   Max.   : 0.85320   Max.   : 0.1918   Max.   : 1.6094   Max.   :  1.6094   Max.   :  1.9459  
+  Mw.coef.1v0        Mw.coef.2v0       Mw.coef.2v1       Ip.coef.1v0       Ip.coef.2v0        Ip.coef.2v1     
+ Min.   :-0.87446   Min.   :-2.3065   Min.   :-2.0735   Min.   :-2.8633   Min.   :-3.23177   Min.   :-2.1545  
+ 1st Qu.:-0.35616   1st Qu.:-0.9420   1st Qu.:-0.7492   1st Qu.:-0.2536   1st Qu.:-0.81087   1st Qu.:-0.7411  
+ Median :-0.16078   Median :-0.6303   Median :-0.4685   Median : 0.2150   Median :-0.36262   Median :-0.5551  
+ Mean   :-0.13441   Mean   :-0.6426   Mean   :-0.5082   Mean   : 0.1528   Mean   :-0.41599   Mean   :-0.5688  
+ 3rd Qu.: 0.06216   3rd Qu.:-0.3174   3rd Qu.:-0.2289   3rd Qu.: 0.5976   3rd Qu.: 0.04471   3rd Qu.:-0.3704  
+ Max.   : 1.12489   Max.   : 0.8496   Max.   : 0.4167   Max.   : 3.1733   Max.   : 2.60590   Max.   : 0.4403  
+### Show most extreme iterations
+     U.n M.n     Mw.n     Ip.n    caliper caliperPw U.smd.X1   U.smd.X2  U.smd.X3 U.smd.X4  U.smd.X5  U.smd.X6 U.smd.X7
+48  6000 543 540.4774 5886.421 0.09962136         0 1.296355 0.07328030 0.5504814 1.152612 0.4301747 0.3043974 1.368228
+181 6000 525 496.4434 6444.187 0.10364636         0 1.347180 0.07770163 0.5203100 1.130334 0.4366742 0.2948585 1.389421
+299 6000 489 478.9328 6147.009 0.10161619         0 1.411846 0.07927360 0.4720964 1.258477 0.4082346 0.3125380 1.492526
+351 6000 585 551.9227 5931.777 0.09725822         0 1.326387 0.09410946 0.5527686 1.120844 0.3679725 0.2919839 1.372496
+      U.smd.X8  U.smd.X9 U.smd.X10 U.meanSmd   M.smd.X1   M.smd.X2   M.smd.X3   M.smd.X4   M.smd.X5   M.smd.X6
+48  0.06003583 0.3544951 0.5126233 0.6102683 0.05743469 0.07124176 0.01187451 0.10252841 0.05388288 0.15271963
+181 0.08215262 0.3817634 0.4869292 0.6147325 0.01830122 0.09370528 0.09239495 0.05400516 0.02449617 0.02957886
+299 0.07825705 0.3583243 0.4812411 0.6352814 0.05192436 0.15424646 0.08282357 0.07351928 0.06609403 0.03723818
+351 0.09988234 0.4134619 0.4901064 0.6130013 0.09572296 0.03865192 0.10038737 0.14359295 0.07110390 0.13399902
+      M.smd.X7   M.smd.X8   M.smd.X9  M.smd.X10  M.meanSmd  Mw.smd.X1  Mw.smd.X2  Mw.smd.X3  Mw.smd.X4  Mw.smd.X5
+48  0.04630816 0.07681949 0.08751004 0.04064738 0.07009669 0.01537487 0.05979345 0.03352050 0.02602970 0.01889518
+181 0.03444228 0.07285546 0.01180102 0.00000000 0.04315804 0.06227166 0.01767156 0.10571194 0.07016751 0.02808387
+299 0.03984880 0.14566962 0.07544933 0.11100521 0.08378188 0.02020066 0.10776583 0.05663601 0.02960767 0.04853871
+351 0.08155029 0.03437923 0.08570640 0.00000000 0.07850940 0.01597800 0.05900193 0.04582019 0.04613996 0.02443412
+     Mw.smd.X6   Mw.smd.X7   Mw.smd.X8  Mw.smd.X9  Mw.smd.X10 Mw.meanSmd  Ip.smd.X1  Ip.smd.X2  Ip.smd.X3 Ip.smd.X4
+48  0.04223714 0.032678092 0.066383095 0.01332681 0.049829916 0.03580688 0.18397159 0.07519285 0.08665199 0.1757068
+181 0.03983563 0.055719920 0.009185697 0.08029764 0.046083623 0.05150291 0.08752845 0.60193257 0.28460729 0.1143624
+299 0.05839392 0.022008955 0.108463815 0.01700660 0.046216885 0.05148391 0.23305656 0.05415926 0.17790788 0.4157057
+351 0.08568620 0.008787829 0.069485043 0.05915799 0.002566236 0.04170575 0.29131880 0.07384188 0.21048234 0.2877186
+     Ip.smd.X5  Ip.smd.X6 Ip.smd.X7  Ip.smd.X8  Ip.smd.X9 Ip.smd.X10 Ip.meanSmd U.coef.1v0  U.coef.2v0 U.coef.2v1
+48  0.34223514 0.20319574 0.1790791 0.11825989 0.03928868  0.4988317  0.1902414  0.3328773 -0.09240251 -0.4252798
+181 0.91532132 0.35094489 0.1001989 0.40521241 0.10620652  0.4897130  0.3456028  0.2533789  0.01616276 -0.2372162
+299 0.13052877 0.05152396 0.2117440 0.07824133 0.18102601  0.2515560  0.1785449  0.2123086 -0.03065837 -0.2429670
+351 0.04001555 0.04161371 0.2773920 0.03923322 0.23667277  0.2469634  0.1745252  0.4826111  0.12078592 -0.3618252
+    U.vars.1v0 U.vars.2v0 U.vars.2v1 U.lower.1v0 U.lower.2v0 U.lower.2v1 U.upper.1v0 U.upper.2v0   U.upper.2v1  U.z.1v0
+48  0.05065680 0.05440272 0.01749491 -0.10825214  -0.5495512  -0.6845204   0.7740068   0.3647462 -0.1660392318 1.478990
+181 0.05098733 0.05279709 0.01632956 -0.18918736  -0.4341894  -0.4876739   0.6959452   0.4665149  0.0132415679 1.122120
+299 0.04492468 0.04693686 0.01526290 -0.20311361  -0.4552821  -0.4851065   0.6277308   0.3939653 -0.0008274233 1.001671
+351 0.04773001 0.05018740 0.01420239  0.05441475  -0.3182950  -0.5954010   0.9108075   0.5598668 -0.1282493982 2.209030
+        U.z.2v0   U.z.2v1   M.coef.1v0 M.coef.2v0 M.coef.2v1 M.vars.1v0 M.vars.2v0 M.vars.2v1 M.lower.1v0 M.lower.2v0
+48  -0.39616257 -3.215281 5.713502e-16  -17.50198  -17.50198  0.1707685 0.09090909 0.09090909  -0.8099366   -18.09293
+181  0.07034134 -1.856338 3.184537e-01  -17.21724  -17.53569  0.2044805 0.12500000 0.09090909  -0.5678308   -17.91019
+299 -0.14151159 -1.966657 6.931472e-01  -17.00059  -17.69374  0.2377301 0.16666667 0.08333333  -0.2624817   -17.80074
+351  0.53916159 -3.036115 6.359888e-01  -17.22681  -17.86280  0.1596782 0.11111111 0.05882353  -0.1472065   -17.88013
+    M.lower.2v1 M.upper.1v0 M.upper.2v0 M.upper.2v1      M.z.1v0   M.z.2v0   M.z.2v1 Mw.coef.1v0 Mw.coef.2v0
+48    -18.09293   0.8099366   -16.91103   -16.91103 1.382606e-15 -58.04751 -58.04751 -0.26249366   -2.306530
+181   -18.12664   1.2047383   -16.52429   -16.94474 7.042395e-01 -48.69771 -58.15932  0.10253629   -1.457608
+299   -18.25953   1.6487760   -16.20044   -17.12795 1.421620e+00 -41.64278 -61.29292  0.05494496   -1.861457
+351   -18.33816   1.4191841   -16.57349   -17.38744 1.591573e+00 -51.68043 -73.65021  0.51664779   -1.440833
+    Mw.coef.2v1 Mw.vars.1v0 Mw.vars.2v0 Mw.vars.2v1 Mw.lower.1v0 Mw.lower.2v0 Mw.lower.2v1 Mw.upper.1v0 Mw.upper.2v0
+48    -2.044036  0.09154607   0.3036364   0.2342539   -0.8555105    -3.386531    -2.992653    0.3305232   -1.2265290
+181   -1.560145  0.10994276   0.2582384   0.1696226   -0.5473397    -2.453604    -2.367359    0.7524123   -0.4616124
+299   -1.916402  0.10243413   0.2248390   0.1433050   -0.5723468    -2.790815    -2.658358    0.6822367   -0.9320994
+351   -1.957481  0.11142771   0.2062831   0.1121058   -0.1376023    -2.331015    -2.613719    1.1708979   -0.5506505
+    Mw.upper.2v1   Mw.z.1v0  Mw.z.2v0  Mw.z.2v1 Ip.coef.1v0 Ip.coef.2v0 Ip.coef.2v1 Ip.vars.1v0 Ip.vars.2v0 Ip.vars.2v1
+48    -1.0954199 -0.8675589 -4.185836 -4.223234   0.5335023  -0.6781097   -1.211612   0.3084564   0.3021212  0.03547266
+181   -0.7529299  0.3092390 -2.868339 -3.788113   1.7679014   1.1111894   -0.656712   0.3379232   0.3386107  0.02617569
+299   -1.1744469  0.1716744 -3.925701 -5.062395   0.6804562  -0.3500498   -1.030506   0.1930356   0.1755381  0.05419231
+351   -1.3012430  1.5477399 -3.172355 -5.846332   0.2152624  -0.8091046   -1.024367   0.2829271   0.2616590  0.04487185
+    Ip.lower.1v0 Ip.lower.2v0 Ip.lower.2v1 Ip.upper.1v0 Ip.upper.2v0 Ip.upper.2v1  Ip.z.1v0   Ip.z.2v0  Ip.z.2v1
+48    -0.5550370  -1.75541251    -1.580755     1.622042    0.3991931   -0.8424695 0.9605930 -1.2336995 -6.433046
+181    0.6285538  -0.02931641    -0.973812     2.907249    2.2516953   -0.3396119 3.0412282  1.9095797 -4.059064
+299   -0.1806683  -1.17121937    -1.486770     1.541581    0.4711198   -0.5742421 1.5487504 -0.8354955 -4.426716
+351   -0.8272579  -1.81167541    -1.439545     1.257783    0.1934663   -0.6091891 0.4046978 -1.5817462 -4.835803
+         U.pY0      U.pY1      U.pY2      M.pY0      M.pY1      M.pY2     Mw.pY0     Mw.pY1     Mw.pY2     Ip.pY0
+48  0.08544882 0.06133174 0.03396685 0.05531331 0.04614269 0.02914433 0.05526714 0.04612800 0.02914647 0.08849140
+181 0.08616036 0.06163499 0.03401918 0.05628189 0.04671922 0.02939749 0.05580222 0.04643374 0.02927215 0.08545382
+299 0.08488295 0.06092594 0.03374231 0.05476053 0.04640882 0.02966114 0.05526890 0.04630674 0.02934437 0.08487617
+351 0.08611838 0.06177274 0.03418902 0.05604695 0.04683403 0.02961903 0.05555111 0.04643729 0.02937655 0.08359622
+        Ip.pY1     Ip.pY2 U.trueCoef.1v0 U.trueCoef.2v0 U.trueCoef.2v1 M.trueCoef.1v0 M.trueCoef.2v0 M.trueCoef.2v1
+48  0.06238333 0.03391825     -0.3316200     -0.9225324     -0.5909124     -0.1812751     -0.6407532     -0.4594782
+181 0.06233535 0.03507997     -0.3349805     -0.9292857     -0.5943053     -0.1862171     -0.6494634     -0.4632463
+299 0.06062233 0.03340768     -0.3316142     -0.9225207     -0.5909065     -0.1654802     -0.6131319     -0.4476517
+351 0.06048022 0.03376176     -0.3322607     -0.9238182     -0.5915575     -0.1795797     -0.6377727     -0.4581930
+    Mw.trueCoef.1v0 Mw.trueCoef.2v0 Mw.trueCoef.2v1 Ip.trueCoef.1v0 Ip.trueCoef.2v0 Ip.trueCoef.2v1      U.pY0
+48       -0.1807585      -0.6398447      -0.4590862      -0.3496072      -0.9589520      -0.6093448 0.07168254
+181      -0.1837874      -0.6451770      -0.4613896      -0.3154475      -0.8903458      -0.5748983 0.06952390
+299      -0.1769229      -0.6331097      -0.4561868      -0.3365300      -0.9324075      -0.5958775 0.06211797
+351      -0.1792006      -0.6371067      -0.4579061      -0.3236819      -0.9066696      -0.5829877 0.06066445
+         U.pY1      U.pY2      M.pY0      M.pY1      M.pY2     Mw.pY0     Mw.pY1     Mw.pY2     Ip.pY0     Ip.pY1
+48  0.05389812 0.03121379 0.05511849 0.04607148 0.02914314 0.05537599 0.04621778 0.02920269 0.08004743 0.05777116
+181 0.05267481 0.03071800 0.05607104 0.04662845 0.02938098 0.05583855 0.04645369 0.02927979 0.07639679 0.05771347
+299 0.04896430 0.02955759 0.05476908 0.04639919 0.02964702 0.05518828 0.04625621 0.02932047 0.05993536 0.04716080
+351 0.04871681 0.02986401 0.05594032 0.04675491 0.02957377 0.05551733 0.04645431 0.02940896 0.06021904 0.04848459
+        Ip.pY2 U.trueCoefCs.1v0 U.trueCoefCs.2v0 U.trueCoefCs.2v1 M.trueCoefCs.1v0 M.trueCoefCs.2v0 M.trueCoefCs.2v1
+48  0.03217121       -0.2851515       -0.8313873       -0.5462357       -0.1792911       -0.6372657       -0.4579746
+181 0.03356736       -0.2775332       -0.8168216       -0.5392883       -0.1844085       -0.6462720       -0.4618635
+299 0.02842675       -0.2379438       -0.7426946       -0.5047508       -0.1658438       -0.6137641       -0.4479203
+351 0.02978415       -0.2193338       -0.7087040       -0.4893702       -0.1793662       -0.6373976       -0.4580314
+    Mw.trueCoefCs.1v0 Mw.trueCoefCs.2v0 Mw.trueCoefCs.2v1 Ip.trueCoefCs.1v0 Ip.trueCoefCs.2v0 Ip.trueCoefCs.2v1
+48         -0.1807816        -0.6398854        -0.4591037        -0.3261296        -0.9115474        -0.5854178
+181        -0.1840086        -0.6455669        -0.4615583        -0.2804501        -0.8223864        -0.5419364
+299        -0.1765550        -0.6324646        -0.4559096        -0.2397035        -0.7459361        -0.5062325
+351        -0.1782261        -0.6353957        -0.4571696        -0.2167426        -0.7040122        -0.4872696
+    U.nCases U.nCases.0 U.nCases.1 U.nCases.2 M.nCases M.nCases.0 M.nCases.1 M.nCases.2 Mw.nCases Mw.nCases.0
+48       251         22        138         91       22         11         11          0  19.10614   10.098025
+181      259         22        131        106       19          8         11          0  17.08599    7.230269
+299      279         25        143        111       18          6         12          0  17.06302    7.729970
+351      298         23        160        115       26          9         17          0  19.79978    6.859459
+    Mw.nCases.1 Mw.nCases.2 Ip.nCases Ip.nCases.0 Ip.nCases.1 Ip.nCases.2 U.X10 U.X10.0 U.X10.1 U.X10.2 M.X10 M.X10.0
+48     7.921665    1.086448  255.9064    26.04575    175.5964    54.26431   648       2      44     602     5       2
+181    8.047707    1.808019  203.7457    10.79483    123.1888    69.76207   598       1      57     540     3       1
+299    8.148423    1.184626  274.5068    16.73351    189.2138    68.55955   594       2      53     539     3       2
+351   11.394176    1.546140  288.1322    26.22761    190.7866    71.11791   592       1      47     544     3       1
+    M.X10.1 M.X10.2   Mw.X10 Mw.X10.0 Mw.X10.1  Mw.X10.2   Ip.X10  Ip.X10.0 Ip.X10.1 Ip.X10.2    U.pMod   U.pMod.0
+48        2       1 5.615174        2 2.431662 1.1835118 628.9208 208.84055 129.2931 290.7871 0.5035000 0.11204013
+181       1       1 2.710852        1 1.239035 0.4718165 813.8582 410.15629 134.8357 268.8662 0.5168333 0.12089810
+299       0       1 4.983277        2 2.031036 0.9522402 658.3329  16.14872 378.2475 263.9367 0.5053333 0.08163265
+351       1       1 2.911738        1 1.000232 0.9115054 609.1562  12.30847 326.8409 270.0068 0.5078333 0.11831442
+     U.pMod.1  U.pMod.2    M.pMod  M.pMod.0  M.pMod.1  M.pMod.2   Mw.pMod Mw.pMod.0 Mw.pMod.1 Mw.pMod.2   Ip.pMod
+48  0.3027148 0.7887947 0.2467772 0.2154696 0.2817680 0.2430939 0.2334981 0.2404736 0.2367286 0.2239897 0.5062065
+181 0.3210015 0.7912568 0.2342857 0.2514286 0.2342857 0.2171429 0.2474893 0.2659873 0.2575325 0.2208763 0.4810128
+299 0.3113971 0.7938336 0.1881391 0.2085890 0.1656442 0.1901840 0.1905805 0.2018217 0.1855231 0.1842968 0.4987122
+351 0.3133258 0.7841990 0.2512821 0.2000000 0.2615385 0.2923077 0.2174379 0.2060508 0.2123208 0.2347226 0.4947838
+    Ip.pMod.0 Ip.pMod.1 Ip.pMod.2  U.pModCs U.pModCs.0 U.pModCs.1 U.pModCs.2 U.nCs  M.pModCs M.pModCs.0 M.pModCs.1
+48  0.6063645 0.4759412 0.5109628 0.4150021 0.13168724  0.3011765  0.6712575  4706 0.2462963  0.2166667  0.2793296
+181 0.4281958 0.4725549 0.5135863 0.4378049 0.13939394  0.3207331  0.6893688  4920 0.2351816  0.2528736  0.2356322
+299 0.2340555 0.5203959 0.5228758 0.3340283 0.08362989  0.2798290  0.5710660  4317 0.1855670  0.2098765  0.1614907
+351 0.3098010 0.5178735 0.5029204 0.2857966 0.13793103  0.2637168  0.4329897  3471 0.2495697  0.2010309  0.2552083
+    M.pModCs.2 M.nCs Mw.pModCs Mw.pModCs.0 Mw.pModCs.1 Mw.pModCs.2   Mw.nCs Ip.pModCs Ip.pModCs.0 Ip.pModCs.1
+48   0.2430939   540 0.2346583   0.2418524   0.2385391   0.2243764 536.0835 0.4369528   0.6233801   0.4125688
+181  0.2171429   523 0.2483387   0.2684090   0.2581692   0.2206579 494.3332 0.4306352   0.4326825   0.4396740
+299  0.1851852   485 0.1897292   0.2018881   0.1841192   0.1830057 477.0139 0.3389069   0.2354722   0.3333857
+351  0.2923077   581 0.2138544   0.2095653   0.2065992   0.2257901 539.8146 0.2806070   0.3307404   0.2843513
+    Ip.pModCs.2   Ip.nCs
+48    0.4064228 4909.757
+181   0.4205660 5743.380
+299   0.3679548 4556.761
+351   0.2653083 3737.094
+### Iteration count of most extreme iteration
+[1] 48
+### Check columns having NA's (This should be empty)
+         
+result.1 
+result.2 
+result.3 
+result.4 
+result.5 
+result.6 
+result.7 
+result.8 
+result.9 
+result.10
+result.11
+result.12
+result.13
+result.14
+result.15
+result.16
+result.17
+result.18
+result.19
+result.20
+result.21
+result.22
+result.23
+result.24
+result.25
+result.26
+result.27
+result.28
+result.29
+result.30
+result.31
+result.32
+result.33
+result.34
+result.35
+result.36
+result.37
+result.38
+result.39
+result.40
+result.41
+result.42
+result.43
+result.44
+result.45
+result.46
+result.47
+result.48
+### Check which scenarios are producing false positives
+### Violating scenarios for M
+$alpha005
+   scenario    N     XT_assoc    pExpo           effects               em pDis M.pRej.1v0 M.pRej.2v0 M.pRej.2v1
+5         5 6000 Good overlap 10:10:80 Null main effects Modification (-) 0.05      0.052      0.052      0.032
+6         6 6000 Poor overlap 10:10:80 Null main effects Modification (-) 0.05      0.031      0.040      0.052
+8         8 6000 Poor overlap 33:33:33 Null main effects Modification (-)  0.2      0.043      0.063      0.057
+10       10 6000 Poor overlap 10:45:45 Null main effects Modification (-)  0.2      0.049      0.043      0.059
+12       12 6000 Poor overlap 10:10:80 Null main effects Modification (-)  0.2      0.040      0.037      0.052
+
+$alpha006
+  scenario    N     XT_assoc    pExpo           effects               em pDis M.pRej.1v0 M.pRej.2v0 M.pRej.2v1
+8        8 6000 Poor overlap 33:33:33 Null main effects Modification (-)  0.2      0.043      0.063      0.057
+
+$alpha007
+ [1] scenario   N          XT_assoc   pExpo      effects    em         pDis       M.pRej.1v0 M.pRej.2v0 M.pRej.2v1
+<0 rows> (or 0-length row.names)
+
+### Violating scenarios for Mw
+$alpha005
+   scenario    N     XT_assoc    pExpo           effects               em pDis Mw.pRej.1v0 Mw.pRej.2v0 Mw.pRej.2v1
+2         2 6000 Poor overlap 33:33:33 Null main effects Modification (-) 0.05       0.048       0.049       0.052
+3         3 6000 Good overlap 10:45:45 Null main effects Modification (-) 0.05       0.041       0.041       0.056
+4         4 6000 Poor overlap 10:45:45 Null main effects Modification (-) 0.05       0.058       0.069       0.069
+8         8 6000 Poor overlap 33:33:33 Null main effects Modification (-)  0.2       0.037       0.049       0.054
+10       10 6000 Poor overlap 10:45:45 Null main effects Modification (-)  0.2       0.049       0.045       0.054
+12       12 6000 Poor overlap 10:10:80 Null main effects Modification (-)  0.2       0.042       0.051       0.051
+
+$alpha006
+  scenario    N     XT_assoc    pExpo           effects               em pDis Mw.pRej.1v0 Mw.pRej.2v0 Mw.pRej.2v1
+4        4 6000 Poor overlap 10:45:45 Null main effects Modification (-) 0.05       0.058       0.069       0.069
+
+$alpha007
+ [1] scenario    N           XT_assoc    pExpo       effects     em          pDis        Mw.pRej.1v0 Mw.pRej.2v0
+[10] Mw.pRej.2v1
+<0 rows> (or 0-length row.names)
+
+### Check which scenarios are producing undercoverage
+### Violating scenarios for M
+$cvr_all_gr097
+   scenario    N     XT_assoc    pExpo               effects               em pDis M.cvr.1v0 M.cvr.2v0 M.cvr.2v1
+7         7 6000 Good overlap 33:33:33     Null main effects Modification (-)  0.2     0.961     0.970     0.976
+16       16 6000 Poor overlap 10:45:45 Non-null main effects Modification (-) 0.05     0.970     0.972     0.972
+19       19 6000 Good overlap 33:33:33 Non-null main effects Modification (-)  0.2     0.968     0.962     0.965
+40       40 6000 Poor overlap 10:45:45 Non-null main effects Modification (+) 0.05     0.965     0.974     0.966
+
+$cvr_all_gr096
+   scenario    N     XT_assoc    pExpo               effects               em pDis M.cvr.1v0 M.cvr.2v0 M.cvr.2v1
+7         7 6000 Good overlap 33:33:33     Null main effects Modification (-)  0.2     0.961     0.970     0.976
+16       16 6000 Poor overlap 10:45:45 Non-null main effects Modification (-) 0.05     0.970     0.972     0.972
+19       19 6000 Good overlap 33:33:33 Non-null main effects Modification (-)  0.2     0.968     0.962     0.965
+40       40 6000 Poor overlap 10:45:45 Non-null main effects Modification (+) 0.05     0.965     0.974     0.966
+
+$cvr_ls095
+   scenario    N     XT_assoc    pExpo               effects               em pDis M.cvr.1v0 M.cvr.2v0 M.cvr.2v1
+5         5 6000 Good overlap 10:10:80     Null main effects Modification (-) 0.05     0.948     0.948     0.968
+6         6 6000 Poor overlap 10:10:80     Null main effects Modification (-) 0.05     0.969     0.960     0.948
+8         8 6000 Poor overlap 33:33:33     Null main effects Modification (-)  0.2     0.957     0.937     0.943
+10       10 6000 Poor overlap 10:45:45     Null main effects Modification (-)  0.2     0.951     0.957     0.941
+12       12 6000 Poor overlap 10:10:80     Null main effects Modification (-)  0.2     0.960     0.963     0.948
+17       17 6000 Good overlap 10:10:80 Non-null main effects Modification (-) 0.05     0.947     0.961     0.957
+18       18 6000 Poor overlap 10:10:80 Non-null main effects Modification (-) 0.05     0.956     0.950     0.948
+20       20 6000 Poor overlap 33:33:33 Non-null main effects Modification (-)  0.2     0.953     0.944     0.948
+22       22 6000 Poor overlap 10:45:45 Non-null main effects Modification (-)  0.2     0.947     0.941     0.942
+26       26 6000 Poor overlap 33:33:33     Null main effects Modification (+) 0.05     0.946     0.958     0.949
+29       29 6000 Good overlap 10:10:80     Null main effects Modification (+) 0.05     0.956     0.943     0.963
+31       31 6000 Good overlap 33:33:33     Null main effects Modification (+)  0.2     0.962     0.948     0.954
+33       33 6000 Good overlap 10:45:45     Null main effects Modification (+)  0.2     0.953     0.948     0.939
+38       38 6000 Poor overlap 33:33:33 Non-null main effects Modification (+) 0.05     0.962     0.949     0.940
+43       43 6000 Good overlap 33:33:33 Non-null main effects Modification (+)  0.2     0.948     0.959     0.951
+44       44 6000 Poor overlap 33:33:33 Non-null main effects Modification (+)  0.2     0.956     0.940     0.951
+45       45 6000 Good overlap 10:45:45 Non-null main effects Modification (+)  0.2     0.952     0.953     0.949
+46       46 6000 Poor overlap 10:45:45 Non-null main effects Modification (+)  0.2     0.960     0.948     0.949
+47       47 6000 Good overlap 10:10:80 Non-null main effects Modification (+)  0.2     0.948     0.938     0.946
+
+$cvr_ls094
+   scenario    N     XT_assoc    pExpo               effects               em pDis M.cvr.1v0 M.cvr.2v0 M.cvr.2v1
+8         8 6000 Poor overlap 33:33:33     Null main effects Modification (-)  0.2     0.957     0.937     0.943
+33       33 6000 Good overlap 10:45:45     Null main effects Modification (+)  0.2     0.953     0.948     0.939
+47       47 6000 Good overlap 10:10:80 Non-null main effects Modification (+)  0.2     0.948     0.938     0.946
+
+$cvr_ls093
+ [1] scenario  N         XT_assoc  pExpo     effects   em        pDis      M.cvr.1v0 M.cvr.2v0 M.cvr.2v1
+<0 rows> (or 0-length row.names)
+
+### Violating scenarios for Mw
+$cvr_all_gr097
+   scenario    N     XT_assoc    pExpo               effects               em pDis Mw.cvr.1v0 Mw.cvr.2v0 Mw.cvr.2v1
+7         7 6000 Good overlap 33:33:33     Null main effects Modification (-)  0.2      0.968      0.967      0.980
+21       21 6000 Good overlap 10:45:45 Non-null main effects Modification (-)  0.2      0.962      0.961      0.962
+
+$cvr_all_gr096
+   scenario    N     XT_assoc    pExpo               effects               em pDis Mw.cvr.1v0 Mw.cvr.2v0 Mw.cvr.2v1
+7         7 6000 Good overlap 33:33:33     Null main effects Modification (-)  0.2      0.968      0.967      0.980
+21       21 6000 Good overlap 10:45:45 Non-null main effects Modification (-)  0.2      0.962      0.961      0.962
+
+$cvr_ls095
+   scenario    N     XT_assoc    pExpo               effects               em pDis Mw.cvr.1v0 Mw.cvr.2v0 Mw.cvr.2v1
+2         2 6000 Poor overlap 33:33:33     Null main effects Modification (-) 0.05      0.952      0.951      0.948
+3         3 6000 Good overlap 10:45:45     Null main effects Modification (-) 0.05      0.959      0.959      0.944
+4         4 6000 Poor overlap 10:45:45     Null main effects Modification (-) 0.05      0.942      0.931      0.931
+8         8 6000 Poor overlap 33:33:33     Null main effects Modification (-)  0.2      0.963      0.951      0.946
+10       10 6000 Poor overlap 10:45:45     Null main effects Modification (-)  0.2      0.951      0.955      0.946
+12       12 6000 Poor overlap 10:10:80     Null main effects Modification (-)  0.2      0.958      0.949      0.949
+14       14 6000 Poor overlap 33:33:33 Non-null main effects Modification (-) 0.05      0.952      0.940      0.934
+15       15 6000 Good overlap 10:45:45 Non-null main effects Modification (-) 0.05      0.952      0.949      0.954
+16       16 6000 Poor overlap 10:45:45 Non-null main effects Modification (-) 0.05      0.954      0.946      0.942
+17       17 6000 Good overlap 10:10:80 Non-null main effects Modification (-) 0.05      0.945      0.945      0.949
+18       18 6000 Poor overlap 10:10:80 Non-null main effects Modification (-) 0.05      0.956      0.943      0.942
+20       20 6000 Poor overlap 33:33:33 Non-null main effects Modification (-)  0.2      0.950      0.948      0.945
+22       22 6000 Poor overlap 10:45:45 Non-null main effects Modification (-)  0.2      0.922      0.947      0.939
+24       24 6000 Poor overlap 10:10:80 Non-null main effects Modification (-)  0.2      0.950      0.951      0.946
+25       25 6000 Good overlap 33:33:33     Null main effects Modification (+) 0.05      0.959      0.949      0.967
+26       26 6000 Poor overlap 33:33:33     Null main effects Modification (+) 0.05      0.936      0.950      0.940
+28       28 6000 Poor overlap 10:45:45     Null main effects Modification (+) 0.05      0.948      0.945      0.938
+29       29 6000 Good overlap 10:10:80     Null main effects Modification (+) 0.05      0.954      0.947      0.965
+30       30 6000 Poor overlap 10:10:80     Null main effects Modification (+) 0.05      0.957      0.951      0.945
+35       35 6000 Good overlap 10:10:80     Null main effects Modification (+)  0.2      0.965      0.946      0.960
+38       38 6000 Poor overlap 33:33:33 Non-null main effects Modification (+) 0.05      0.957      0.943      0.946
+39       39 6000 Good overlap 10:45:45 Non-null main effects Modification (+) 0.05      0.968      0.959      0.948
+40       40 6000 Poor overlap 10:45:45 Non-null main effects Modification (+) 0.05      0.944      0.943      0.934
+42       42 6000 Poor overlap 10:10:80 Non-null main effects Modification (+) 0.05      0.960      0.951      0.937
+44       44 6000 Poor overlap 33:33:33 Non-null main effects Modification (+)  0.2      0.958      0.942      0.948
+45       45 6000 Good overlap 10:45:45 Non-null main effects Modification (+)  0.2      0.961      0.946      0.946
+46       46 6000 Poor overlap 10:45:45 Non-null main effects Modification (+)  0.2      0.954      0.949      0.953
+47       47 6000 Good overlap 10:10:80 Non-null main effects Modification (+)  0.2      0.947      0.950      0.948
+48       48 6000 Poor overlap 10:10:80 Non-null main effects Modification (+)  0.2      0.949      0.948      0.942
+
+$cvr_ls094
+   scenario    N     XT_assoc    pExpo               effects               em pDis Mw.cvr.1v0 Mw.cvr.2v0 Mw.cvr.2v1
+4         4 6000 Poor overlap 10:45:45     Null main effects Modification (-) 0.05      0.942      0.931      0.931
+14       14 6000 Poor overlap 33:33:33 Non-null main effects Modification (-) 0.05      0.952      0.940      0.934
+22       22 6000 Poor overlap 10:45:45 Non-null main effects Modification (-)  0.2      0.922      0.947      0.939
+26       26 6000 Poor overlap 33:33:33     Null main effects Modification (+) 0.05      0.936      0.950      0.940
+28       28 6000 Poor overlap 10:45:45     Null main effects Modification (+) 0.05      0.948      0.945      0.938
+40       40 6000 Poor overlap 10:45:45 Non-null main effects Modification (+) 0.05      0.944      0.943      0.934
+42       42 6000 Poor overlap 10:10:80 Non-null main effects Modification (+) 0.05      0.960      0.951      0.937
+
+$cvr_ls093
+   scenario    N     XT_assoc    pExpo               effects               em pDis Mw.cvr.1v0 Mw.cvr.2v0 Mw.cvr.2v1
+22       22 6000 Poor overlap 10:45:45 Non-null main effects Modification (-)  0.2      0.922      0.947      0.939
+
+
+### Record package versions
+R version 3.3.0 (2016-05-03)
+Platform: x86_64-apple-darwin13.4.0 (64-bit)
+Running under: OS X 10.11.5 (El Capitan)
+
+locale:
+[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+
+attached base packages:
+ [1] parallel  splines   stats4    methods   grid      stats     graphics  grDevices utils     datasets  base     
+
+other attached packages:
+ [1] sandwich_2.3-4    doParallel_1.0.10 iterators_1.0.8   foreach_1.4.3     survey_3.30-3     VGAM_1.0-2       
+ [7] gridExtra_2.2.1   ggplot2_2.1.0     tidyr_0.5.1       reshape2_1.4.1    dplyr_0.5.0       magrittr_1.5     
+
+loaded via a namespace (and not attached):
+ [1] Rcpp_0.12.5      munsell_0.4.3    lattice_0.20-33  colorspace_1.2-6 R6_2.1.2         stringr_1.0.0   
+ [7] plyr_1.8.4       tools_3.3.0      gtable_0.2.0     DBI_0.4-1        digest_0.6.9     lazyeval_0.2.0  
+[13] assertthat_0.1   tibble_1.1       codetools_0.2-14 labeling_0.3     stringi_1.1.1    compiler_3.3.0  
+[19] scales_0.4.0     zoo_1.7-13      
+### Started   2016-07-16 08:17:37 
+### Finished  2016-07-16 08:19:27 
+Time difference of 1.825098 mins
