@@ -11,13 +11,13 @@
 
 * Files and folders
 
- - *.R: Main R script files for generating simulation data, analyzing data, and reporting results. Execution each file will generate a plain text report file named *.R.txt. Only =03.Report.R.txt= is kept in this repository.
- - *_Lsf.sh: Example parallelization shell scripts for the Linux LSF batch job system. These are designed for Harvard Medical School's Orchestra cluster specifically, and are not expected to work without modification elsewhere.
- - *_Slurm.sh: Example parallelization shell scripts for the Linux SLURM batch job system. These are designed for Harvard University's Odyssey cluster specifically, and are not expected to work without modification elsewhere.
- - data: Folder for simulation data. Due to file size issues, only the analysis result files sufficient for running =03.Report.R= is kept.
- - figures: Folder for figure PDFs generatd by reporting scripts.
- - function_definitions: Folder for R function definitions used by the main R scripts.
- - rassen_toolbox: Folder for Rassen et al's [[http://www.drugepi.org/dope-downloads/#Pharmacoepidemiology%20Toolbox][Pharmacoepidemiology Toolbox]]. =rassen_toolbox/java/pharmacoepi.jar= is required for three-way matching.
+ - =*.R=: Main R script files for generating simulation data, analyzing data, and reporting results. Execution each file will generate a plain text report file named *.R.txt. Only =03.Report.R.txt= is kept in this repository.
+ - =*_Lsf.sh=: Example parallelization shell scripts for the Linux LSF batch job system. These are designed for Harvard Medical School's Orchestra cluster specifically, and are not expected to work without modification elsewhere.
+ - =*_Slurm.sh=: Example parallelization shell scripts for the Linux SLURM batch job system. These are designed for Harvard University's Odyssey cluster specifically, and are not expected to work without modification elsewhere.
+ - =data/=: Folder for simulation data. Due to file size issues, only the analysis result files sufficient for running =03.Report.R= is kept.
+ - =figures/=: Folder for figure PDFs generatd by reporting scripts.
+ - =function_definitions/=: Folder for R function definitions used by the main R scripts.
+ - =rassen_toolbox/=: Folder for Rassen et al's [[http://www.drugepi.org/dope-downloads/#Pharmacoepidemiology%20Toolbox][Pharmacoepidemiology Toolbox]]. =rassen_toolbox/java/pharmacoepi.jar= is required for three-way matching.
 
 
 * How to replicate simulation
