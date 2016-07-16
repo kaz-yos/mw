@@ -36,7 +36,7 @@ Rscript ./00.InstallDependencies.R
 
 ** Generate data
 
-The simulated dataset must be generated first. The following generates 48 scenario data files (e.g., Scenario001\_R1000.RData) having 1000 iterations each in the data.
+The simulated dataset must be generated first. The following generates 48 scenario data files (e.g., =Scenario001_R1000.RData=) having 1000 iterations each in the data subfolder.
 
 #+BEGIN_SRC sh
 Rscript ./01.DataGenerator.R
