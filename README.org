@@ -6,7 +6,7 @@
 
 * What is this?
 
-  The code included in this repository was used to conduct the simulation study described in the [[http://www.slideshare.net/kaz_yos/matching-weights-to-simultaneous-compare-three-treatment-groups-a-simulation-study][presentation]] at the Epidemiology Congress of Americas 2016 (Miami, Florida, USA). The simulation study compared matching weights ([[http://www.ncbi.nlm.nih.gov/pubmed/23902694][Li et al 2013]]), three-way matching ([[http://www.ncbi.nlm.nih.gov/pubmed/23532053][Rassen et al 2013]]), and inverse probability of treatment weighting ([[http://www.ncbi.nlm.nih.gov/pubmed/10955408][Robins et al 2000]]) in three-level categorical point exposure setting. The corresponding manuscript is in press at [[http://journals.lww.com/epidem/Pages/default.aspx][/Epidemiology/]].
+  The code included in this repository was used to conduct the simulation study described in the [[http://www.slideshare.net/kaz_yos/matching-weights-to-simultaneous-compare-three-treatment-groups-a-simulation-study][presentation]] at the Epidemiology Congress of Americas 2016 (Miami, Florida, USA). The simulation study compared matching weights ([[http://www.ncbi.nlm.nih.gov/pubmed/23902694][Li et al 2013]]), three-way matching ([[http://www.ncbi.nlm.nih.gov/pubmed/23532053][Rassen et al 2013]]), and inverse probability of treatment weighting ([[http://www.ncbi.nlm.nih.gov/pubmed/10955408][Robins et al 2000]]) in three-level categorical point exposure setting. The corresponding manuscript is in press at [[http://journals.lww.com/epidem/Pages/default.aspx][Epidemiology]].
 
 
 * Files and folders
