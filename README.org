@@ -109,7 +109,7 @@ Rscript ./05.BootstrapReport.R
 
 
 * Version history
-- 2016-07-26: Add manuscript status
+- 2016-07-26: Add manuscript status and tutorial link
 - 2016-07-16: Initial upload
 
 # ############################################################################ #

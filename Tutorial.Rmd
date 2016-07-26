@@ -9,10 +9,10 @@ output: html_document
 ## knitr configuration: http://yihui.name/knitr/options#chunk_options
 library(knitr)
 showMessage <- FALSE
-showWarning <- TRUE
+showWarning <- FALSE
 set_alias(w = "fig.width", h = "fig.height", res = "results")
 opts_chunk$set(comment = "##", error= TRUE, warning = showWarning, message = showMessage,
-               tidy = FALSE, cache = F, echo = T,
+               tidy = FALSE, cache = T, echo = T,
                fig.width = 7, fig.height = 7, dev.args = list(family = "sans"))
 ## for rgl
 ## knit_hooks$set(rgl = hook_rgl, webgl = hook_webgl)
@@ -26,7 +26,8 @@ options(width = 116, scipen = 5)
 
 ## References
 
-- https://github.com/kaz-yos/mw
+- Slides: http://www.slideshare.net/kaz_yos/matching-weights-to-simultaneous-compare-three-treatment-groups-a-simulation-study
+- Simulation study code: https://github.com/kaz-yos/mw
 
 
 ## Aim
