@@ -1,0 +1,296 @@
+---
+title: "Matching Weights Tutorial"
+author: "Kazuki Yoshida"
+date: "`r format(Sys.time(), '%Y-%m-%d')`"
+output: html_document
+---
+
+```{r, message = FALSE, tidy = FALSE, echo = F}
+## knitr configuration: http://yihui.name/knitr/options#chunk_options
+library(knitr)
+showMessage <- FALSE
+showWarning <- TRUE
+set_alias(w = "fig.width", h = "fig.height", res = "results")
+opts_chunk$set(comment = "##", error= TRUE, warning = showWarning, message = showMessage,
+               tidy = FALSE, cache = F, echo = T,
+               fig.width = 7, fig.height = 7, dev.args = list(family = "sans"))
+## for rgl
+## knit_hooks$set(rgl = hook_rgl, webgl = hook_webgl)
+## for animation
+opts_knit$set(animation.fun = hook_ffmpeg_html)
+
+## R configuration
+options(width = 116, scipen = 5)
+```
+
+
+## References
+
+- https://github.com/kaz-yos/mw
+
+
+## Aim
+
+This document provides a step-by-step guide for implementation of matching weight method in practice. The example is in the three-group setting. However, the essentially the same code can be used in the two-group setting or settings where there are more than three groups. The example is written in R, but it can be implemented in any statistical environment that has (multinomial) logistic regression and weighted data analysis capabilities.
+
+
+## Dataset
+
+The tutoring dataset included in the TriMatch R package is used. The exposure is the treat variable, which takes one of Treat1, Treat2, and Control. These represent the tutoring method each student received. The outcome is the Grade ordinal variable, which takes one of 0, 1, 2, 3, or 4. Pre-treatment potential confounders include gender, ethnicity, military service status of the student, non-native English speaker status, education level of the subject's mother (ordinal), education level of the subject's father (ordinal), age of the student, employment status (no, part-time, full-time), household income (ordinal), number of transfer credits, grade point average. The dataset does not contain any missing values. See ?tutoring for details. The employment categorical variable is coded numerically. Thus, it is converted to a factor.
+
+```{r}
+
+## Load data
+library(TriMatch)
+data(tutoring)
+summary(tutoring)
+
+## Make employment categorical
+tutoring$Employment <- factor(tutoring$Employment, levels = 1:3,
+                              labels = c("no","part-time","full-time"))
+
+```
+
+
+## Pre-weighting balance assessment
+
+The tableone package can be utilized for covariate balance assessment using standardized mean differences (SMD). SMD greater than 0.1 is often regarded as a substantial imbalance. The SMD shown in the table is the average of all possible pairwise SMDs.
+
+```{r}
+
+## Examine covariate balance
+library(tableone)
+covariates <- c("Gender", "Ethnicity", "Military", "ESL",
+                "EdMother", "EdFather", "Age", "Employment",
+                "Income", "Transfer", "GPA")
+tab1Unadj <- CreateTableOne(vars = covariates, strata = "treat", data = tutoring)
+print(tab1Unadj, test = FALSE, smd = TRUE)
+
+## Examine all pairwise SMDs
+ExtractSmd(tab1Unadj)
+
+```
+
+
+## Propensity score modeling
+
+As the exposure is a three-category variable, the propensity score model can be modeled using multinomial logistic regression. In R, the VGAM (vector generalized linear and additive models) package provides a flexible framework for this. Because the sample size of the treatment 2 group is small, making flexible modeling difficult, the ordinal variables are used only as linear terms. Predicting the "response" gives predicted probabilities of each treatment as a (sample size) $\times$ 3 matrix, which then can be added to the dataset. The following AddGPS function can be used to ease this process. Three propensity scores (one for each treatment category) are added to the dataset.
+
+```{r}
+
+## Function to add generalized PS to dataset
+AddGPS <- function(data, formula, family = multinomial(), psPrefix = "PS_") {
+    library(VGAM)
+    ## Fit multinomial logistic regression
+    resVglm <- vglm(formula = formula, data = data, family = family)
+    ## Calculate PS
+    psData <- as.data.frame(predict(resVglm, type = "response"))
+    names(psData) <- paste0(psPrefix, names(psData))
+    cbind(data, psData)
+}
+
+tutoring <- AddGPS(data = tutoring, # dataset
+                   ## Propensity score model for multinomial regression
+                   formula = treat ~ Gender + Ethnicity + Military +
+                                 ESL + EdMother + EdFather + Age +
+                                 Employment + Income + Transfer + GPA)
+
+```
+
+
+## Weight creation
+
+As mentioned in the manuscript, the matching weight is defined as follows.
+
+\begin{align*}
+  MW_{i}
+  &= \frac{{Smallest~ PS}}{{PS~ of~ assigned~ treatment}}\\
+  &= \frac{{min}(e_{1i},...,e_{Ki})}{\sum^K_{k=1} I(Z_{i} = k) e_{ki}}\\
+\end{align*}
+
+where $e_{ki}$ is the $i$-th individual's probability of being assigned to the $k$-th treatment category given the covariate pattern, $Z_i \in \{1,...,K\}$ is the categorical variable indicating the $i$-th individual's treatment assignment.
+
+The following function can be used to add matching weight to the dataset. Individuals' matching weights have a range of [0,1], where as the inverse probability treatment weights have a range of [1,$\infty$].
+
+```{r}
+
+## Function to add matching weight as mw to dataset
+AddMwToData <- function(data, txVar, txLevels, psPrefix = "PS_") {
+    ## Treatment indicator data frame (any number of groups allowed)
+    dfAssign <- as.data.frame(lapply(txLevels, function(tx_k) {
+        as.numeric(data[txVar] == tx_k)
+    }))
+    ## Name of PS variables
+    psVars <- paste0(psPrefix, txLevels)
+    ## Pick denominator (PS for assigned treatment)
+    data$PS_assign <- rowSums(data[psVars] * dfAssign)
+    ## Pick numerator
+    data$PS_min <- do.call(pmin, data[psVars])
+    ## Calculate the IPTW
+    data$iptw <- 1 / data$PS_assign
+    ## Calculate the matching weight
+    data$mw <- exp(log(data$PS_min) - log(data$PS_assign))
+    ## Return the whole data
+    data
+}
+
+## Add IPTW and MW
+tutoring <- AddMwToData(data = tutoring, # dataset
+                        txVar = "treat", # treatment variable name
+                        tx = c("Control", "Treat1", "Treat2")) # treatment levels
+
+## Check how weights are defined
+head(tutoring[c("treat","PS_Control","PS_Treat1","PS_Treat2","PS_assign","PS_min","iptw","mw")], 20)
+
+## Check weight distribution
+summary(tutoring[c("mw","iptw")])
+
+```
+
+
+## Post-weighting balance assessment
+
+All analyses afterward should be proceeded as weighted analyses. In R, this is most easily achieved by using the survey package. Firstly, a survey design object must be created with svydesign function. The resulting object is then used as the dataset. The weighted covariate table can be constructed with the tableone package. All SMDs are less than 0.1 after weighting, indicating better covariate balance.
+
+```{r}
+
+## Created weighted data object
+library(survey)
+tutoringSvy <- svydesign(ids = ~ 1, data = tutoring, weights = ~ mw)
+
+## Weighted table with tableone
+tab1Mw <- svyCreateTableOne(vars = covariates, strata = "treat", data = tutoringSvy)
+print(tab1Mw, test = FALSE, smd = TRUE)
+
+## All pairwise SMDs
+ExtractSmd(tab1Mw)
+
+```
+
+Visualizing the covariate balance before and after weighting can sometimes be helpful. Extracted SMD data can be fed to a plotting function (here ggplot2).
+
+```{r}
+
+## Create SMD data frame
+dataPlot <- data.frame(variable   = rownames(ExtractSmd(tab1Unadj)),
+                       Unadjusted = ExtractSmd(tab1Unadj)[,"average"],
+                       Weighted   = ExtractSmd(tab1Mw)[,"average"])
+## Reshape to long format
+library(reshape2)
+dataPlotMelt <- melt(data          = dataPlot,
+                     id.vars       = "variable",
+                     variable.name = "method",
+                     value.name    = "SMD")
+## Variables names ordered by unadjusted SMD values
+varsOrderedBySmd <- rownames(dataPlot)[order(dataPlot[,"Unadjusted"])]
+## Reorder factor levels
+dataPlotMelt$variable <- factor(dataPlotMelt$variable,
+                                levels = varsOrderedBySmd)
+dataPlotMelt$method <- factor(dataPlotMelt$method,
+                              levels = c("Weighted","Unadjusted"))
+## Plot
+library(ggplot2)
+ggplot(data = dataPlotMelt, mapping = aes(x = variable, y = SMD, group = method, linetype = method)) +
+    geom_line() +
+    geom_point() +
+    geom_hline(yintercept = 0, size = 0.3) +
+    geom_hline(yintercept = 0.1, size = 0.1) +
+    coord_flip() +
+    theme_bw() + theme(legend.key = element_blank())
+
+```
+
+
+## Outcome analysis
+
+The outcome analyses should also be proceeded as weighted analyses. Most functions in the survey package is named svy* with * being the name of the unweighted counterpart.
+
+The outcome was handled as a continuous outcome for simplicity. In weighted linear regression, both treatments appear superior to the control without tutoring regarding the course grade assuming the propensity score model was correctly specified. The mean difference was 0.45 [0.23, 0.67] for treatment 1 vs control and 0.67 [0.45, 0.89] for treatment 2 vs control.
+
+```{r}
+
+## Weighted group means of Grade
+svyby(formula = ~ Grade, by = ~ treat, design = tutoringSvy, FUN = svymean)
+
+## Group difference tested in weighted regression
+modelOutcome1 <- svyglm(formula = Grade ~ treat, design = tutoringSvy)
+summary(modelOutcome1)
+## ShowRegTable in tableone may come in handy
+ShowRegTable(modelOutcome1, exp = FALSE)
+
+```
+
+
+## Bootstrapping
+
+As discussed in the manuscript, bootstrapping may provide better variance estimates than model-based inference. The boot package is a general purpose bootstrapping package. The following context-specific wrapper functions can be used to simplify the process. In this specific example, the bootstrap confidence intervals for the treatment effects were somewhat narrower.
+
+```{r}
+
+## Define a function for each bootstrap step
+BootModelsConstructor <- function(formulaPs, formulaOutcome, OutcomeRegFun, ...) {
+    ## Obtain treatment variable name
+    txVar <- as.character(formulaPs[[2]])
+    ## Return a function
+    function(data, i) {
+        ## Obtain treatment levels
+        txLevels <- names(table(data[,txVar]))
+        ## Add generalized propensity scores
+        dataB <- AddGPS(data = data[i,], formula = formulaPs)
+        ## Add matching weight
+        dataB <- AddMwToData(data = dataB, txVar = txVar, txLevels = txLevels)
+        ## Weighted analysis (lm() ok as only the estimates are used)
+        lmWeighted <- OutcomeRegFun(formula = formulaOutcome, data = dataB,
+                                    weights = mw, ...)
+        ## Extract coefs
+        coef(lmWeighted)
+    }
+}
+
+## Define a function to summarize bootstrapping
+BootSummarize <- function(data, R, BootModels, level = 0.95, ...) {
+    ## Use boot library
+    library(boot)
+    ## Run bootstrapping
+    outBoot       <- boot(data = data, statistic = BootModels, R = R, ...)
+    out           <- outBoot$t
+    colnames(out) <- names(outBoot$t0)
+    ## Confidence intervals
+    lower <- apply(out, MARGIN = 2, quantile, probs = (1 - level) / 2)
+    upper <- apply(out, MARGIN = 2, quantile, probs = (1 - level) / 2 + level)
+    outCi <- cbind(lower = lower, upper = upper)
+    ## Variance of estimator
+    outVar <- apply(out, MARGIN = 2, var)
+    outSe  <- sqrt(outVar)
+    ## Return as a readable table
+    cbind(est = outBoot$t0, outCi, var = outVar, se = outSe)
+}
+
+## Construct a custom bootstrap function with specific formulae
+## formulaPs is propensity score model
+BootModels <- BootModelsConstructor(formulaPs = treat ~ Gender + Ethnicity + Military +
+                                                ESL + EdMother + EdFather + Age +
+                                                Employment + Income + Transfer + GPA,
+                                    ## Outcome model
+                                    formulaOutcome = Grade ~ treat,
+                                    ## Regression function for outcome model
+                                    OutcomeRegFun = lm)
+
+## Use a clean dataset without PS and weight variables
+data(tutoring)
+## Make employment categorical
+tutoring$Employment <- factor(tutoring$Employment, levels = 1:3,
+                              labels = c("no","part-time","full-time"))
+## Run bootstrap
+set.seed(201508131)
+system.time(bootOut1 <- BootSummarize(data = tutoring, R = 2000, BootModels = BootModels))
+bootOut1
+
+## Show naive confidence interval again
+ShowRegTable(modelOutcome1, exp = FALSE, digits = 7)
+
+```
+
+
+--------------------
+- github: https://github.com/kaz-yos
