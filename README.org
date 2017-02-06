@@ -1,12 +1,12 @@
 #+TITLE: Matching weights simulation study R code
 #+AUTHOR: Kazuki Yoshida
 #+EMAIL: kazukiyoshida@mail.harvard.edu
-#+DATE: 2016-07-16
+#+DATE: 2017-02-06
 # ############################################################################ #
 
 * What is this?
 
-  The code included in this repository was used to conduct the simulation study described in the [[http://www.slideshare.net/kaz_yos/matching-weights-to-simultaneous-compare-three-treatment-groups-a-simulation-study][presentation]] at the Epidemiology Congress of Americas 2016 (Miami, Florida, USA). The simulation study compared matching weights ([[http://www.ncbi.nlm.nih.gov/pubmed/23902694][Li et al 2013]]), three-way matching ([[http://www.ncbi.nlm.nih.gov/pubmed/23532053][Rassen et al 2013]]), and inverse probability of treatment weighting ([[http://www.ncbi.nlm.nih.gov/pubmed/10955408][Robins et al 2000]]) in three-level categorical point exposure setting. The corresponding manuscript is in press at [[http://journals.lww.com/epidem/Pages/default.aspx][Epidemiology]]. A tutorial for using matching weights in an empirical study is at the [[http://rpubs.com/kaz_yos/matching-weights][RPubs]].
+The code included in this repository was used to conduct the simulation study described in the [[http://www.slideshare.net/kaz_yos/matching-weights-to-simultaneous-compare-three-treatment-groups-a-simulation-study][presentation]] at the Epidemiology Congress of Americas 2016 (Miami, Florida, USA). The simulation study compared matching weights ([[http://www.ncbi.nlm.nih.gov/pubmed/23902694][Li et al 2013]]), three-way matching ([[http://www.ncbi.nlm.nih.gov/pubmed/23532053][Rassen et al 2013]]), and inverse probability of treatment weighting ([[http://www.ncbi.nlm.nih.gov/pubmed/10955408][Robins et al 2000]]) in three-level categorical point exposure setting. The corresponding online-first manuscript is available at [[http://journals.lww.com/epidem/Abstract/publishahead/Matching_weights_to_simultaneously_compare_three.98901.aspx][Epidemiology]]. Please email me if you have difficulty obtaining the paper. A tutorial for using matching weights in an empirical study is at the [[http://rpubs.com/kaz_yos/matching-weights][RPubs]].
 
 
 * Files and folders
